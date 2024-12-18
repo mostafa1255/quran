@@ -342,7 +342,8 @@ String getAudioURLBySurah(int surahNumber) {
 }
 
 ///Takes [surahNumber] & [verseNumber] and returns audio URL of that verse
-String getAudioURLByVerse(int surahNumber, int verseNumber) {
+String getAudioURLByVerse(
+    int surahNumber, int verseNumber, String identifierName) {
   int verseNum = 0;
   for (var i in quranText) {
     if (i['surah_number'] == surahNumber && i['verse_number'] == verseNumber) {
@@ -350,7 +351,7 @@ String getAudioURLByVerse(int surahNumber, int verseNumber) {
       break;
     }
   }
-  return "https://cdn.islamic.network/quran/audio/128/ar.alafasy/$verseNum.mp3";
+  return "https://cdn.islamic.network/quran/audio/128/$identifierName/$verseNum.mp3";
 }
 
 ///Takes [surahNumber] & [verseNumber] and returns true if verse is sajdah
@@ -358,8 +359,8 @@ bool isSajdahVerse(int surahNumber, int verseNumber) =>
     sajdahVerses[surahNumber] == verseNumber;
 
 ///Takes [verseNumber] and returns audio URL of that verse
-String getAudioURLByVerseNumber(int verseNumber) {
-  return "https://cdn.islamic.network/quran/audio/128/ar.alafasy/$verseNumber.mp3";
+String getAudioURLByVerseNumber(int verseNumber, String identifierName) {
+  return "https://cdn.islamic.network/quran/audio/128/$identifierName/$verseNumber.mp3";
 }
 
 enum Translation {
